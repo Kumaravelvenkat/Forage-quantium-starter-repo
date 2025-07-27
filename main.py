@@ -5,7 +5,7 @@ import glob
 def csv_test():
     csv_files = glob.glob('data/*.csv')
     with open('data/daily_sales_data_combined.csv', mode='w') as comb_csv_file:
-        fieldnames2 = ['Product', 'Sales', 'Region']
+        fieldnames2 = ['Sales', 'Date', 'Region']
         csv_writer = csv.DictWriter(comb_csv_file, fieldnames2, delimiter=',')
         csv_writer.writeheader()
         for csv_file in csv_files:
@@ -17,7 +17,7 @@ def csv_test():
                 for row in csv_reader:
                     if row['Product_Name'] == 'pink morsel':
                         sale = '$' + str(float((row['Price'])[1:]) * float(row['Quantity']))
-                        csv_writer.writerow({'Product': row['Product_Name'], 'Sales': sale, 'Region': row['Region']})
+                        csv_writer.writerow({'Sales': sale, 'Date': row['Date'], 'Region': row['Region']})
 
 #Above is the CSV example
 
