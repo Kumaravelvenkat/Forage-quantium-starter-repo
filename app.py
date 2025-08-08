@@ -5,8 +5,8 @@ import pandas as pd
 app = Dash()
 
 df = pd.read_csv('data/daily_sales_data_combined.csv')
-
-fig = px.bar(df, x="Date", y="Sales", color="Date", barmode="stack")
+df.sort_values('Date', inplace=True)
+fig = px.line(df, x="Date", y="Sales")
 
 app.layout = html.Div(children=[
     html.H1(children='Pink Morsel'),
